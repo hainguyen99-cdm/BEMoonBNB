@@ -1,6 +1,6 @@
 const Role = require('../models/enum/role')
 const jwt = require('jsonwebtoken')
-const {User} =require('./../models/users')
+const {User} =require('../models/Users')
 
 async function checkAdmin(req, res, next) {
     const token = req.header('Authorization'); // Assumption: Token is in the header
