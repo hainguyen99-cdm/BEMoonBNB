@@ -124,7 +124,7 @@ function generateTokens(payload) {
     { id, keyPc },
     process.env.ACCESS_TOKEN_SECRET,
     {
-      expiresIn: '30m'
+      expiresIn: '30d'
     }
   )
 
