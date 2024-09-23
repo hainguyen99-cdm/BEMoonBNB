@@ -44,7 +44,7 @@ let userService = {
         }
         const id = user._id.toString()
         const tokens = generateTokens({ id, keyPc })
-        const response = await Users.findOneAndUpdate({ keyPc: keyPc }, { refreshToken: tokens.refreshToken })
+        const response = await Users.findOneAndUpdate({ keyPc: keyPc }, { refreshToken: tokens.refreshToken,accessToken: tokens.accessToken })
         let userInfo = await Users.findOne({ _id: user._id }, { passWord: 0, __v: 0, createdAt: 0, updatedAt: 0, refreshToken: 0 })
         return resolve({  tokens })
       } catch (e) {
@@ -56,7 +56,7 @@ let userService = {
     return new Promise(async function (resolve, reject) {
       try {
         const userId = req.body.userId
-        const response = await User.findOneAndUpdate({ _id: userId }, { refreshToken: null })
+        const response = await Users.findOneAndUpdate({ _id: userId }, { refreshToken: null })
         resolve(true)
 
       } catch (e) {
@@ -70,11 +70,11 @@ let userService = {
       try {
         const refreshToken = req.body.refreshToken
         if (!refreshToken) reject(false)
-        const user = await User.findOne({ refreshToken: refreshToken })
+        const user = await Users.findOne({ refreshToken: refreshToken })
         if (!user) reject(false)
         jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET)
         const tokens = generateTokens(user._id, user.userName)
-        const response = await User.findOneAndUpdate({ userName: user.userName }, { refreshToken: tokens.refreshToken })
+        const response = await Users.findOneAndUpdate({ userName: user.userName }, { refreshToken: tokens.refreshToken })
         return resolve(tokens)
       } catch (e) {
         console.log(e)

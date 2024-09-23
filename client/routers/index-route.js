@@ -4,11 +4,10 @@ const router = express.Router()
 const userRouter = require('./users-route')
 const moonBNBRouter = require('./moonBNB-route')
 
-
+const middleware = require('./../../middleware/auth')
 
 
 router.use('/auth',userRouter)
-const middleware = require('./../../middleware/auth')
 router.use(middleware)
 router.use('/service',moonBNBRouter)
 
