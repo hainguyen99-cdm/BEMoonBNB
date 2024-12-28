@@ -1,6 +1,7 @@
 const status = {
   RUNNING: 'RUNNING',
   CANCEL: 'CANCEL',
+  
   END:'END',
   WAIT:'WAIT'
 }
