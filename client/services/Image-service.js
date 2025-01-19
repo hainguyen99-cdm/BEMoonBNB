@@ -83,7 +83,7 @@ let ImagesServices = {
 </head>
 <body>
     <div class="container">
-        <img class="lucky-cat" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Maneki_Neko.svg/800px-Maneki_Neko.svg.png" alt="Lucky Cat" />
+        <img class="lucky-cat" src="https://i.imgur.com/OrD1faj.png" alt="Lucky Cat" />
         <h1>QR Đây Thanh Toán Nhanh Đi!!!!!!!</h1>
         <img class="qr-image" src="${image.Image}" alt="QR Code" width="300" />
     </div>
